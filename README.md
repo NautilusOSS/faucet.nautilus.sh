@@ -7,3 +7,4 @@
 - [ ] Show notification on sucessful txns
 - [ ] Reset reCAPTCHA after sucessful transaction 
 - [ ] Implement asset dropdown add voi
+- [ ] Add link to https://kibis.is/
