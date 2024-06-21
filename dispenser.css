@@ -606,7 +606,7 @@
 }
 .card-description {
   align-self: stretch;
-  height: 80px;
+  height: 90px;
   position: relative;
   font-size: 16px;
   letter-spacing: -0.07px;
@@ -698,7 +698,7 @@
 }
 .text5 {
   align-self: stretch;
-  height: 80px;
+  height: 90px;
   position: relative;
   font-size: 16px;
   letter-spacing: -0.07px;
@@ -790,7 +790,7 @@
 }
 .text8 {
   align-self: stretch;
-  height: 80px;
+  height: 90px;
   position: relative;
   font-size: 16px;
   letter-spacing: -0.07px;
@@ -980,6 +980,10 @@
   max-width: 124%;
   flex-shrink: 0;
 }
+.card01:hover {
+  color: #fff;
+}
+
 .asana-card,
 .call-to-action1 {
   max-width: 100%;
@@ -991,6 +995,8 @@
   padding: 0;
   font-size: 20px;
   color: #6f2ae2;
+  /***/
+  text-decoration: none;
 }
 .call-to-action1 {
   align-self: stretch;
