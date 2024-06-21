@@ -9,4 +9,5 @@
 - [ ] Implement asset dropdown add voi
 - [x] 6.21 Add link to https://kibis.is/
 - [x] 6.21 Add links to Kibisis add asset VIA guides
-- [x] 6.21 Apply new design with voi social links 
+- [x] 6.21 Apply new design with voi social links
+- [ ] Add favicon
