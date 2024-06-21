@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Voi dispenser</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dispenser.css">
+
+  <!--link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"-->
+  <!--link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+  <!--script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    crossorigin="anonymous"></script-->
+  <!--script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-  <script src='https://www.google.com/recaptcha/api.js'>
-  </script>
+    crossorigin="anonymous"></script-->
+  <script src='https://www.google.com/recaptcha/api.js'></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
-    </script>
+  </script>
   <script>
     var ADDRESS_REGEX = /[A-Z0-9]{58}/
-
     function sanitize(string) {
       const entityMap = {
         '&': '&amp;',
@@ -40,23 +40,19 @@
         return entityMap[s];
       });
     }
-
     function loadparam() {
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const account = sanitize(urlParams.get('account'))
-
       if (ADDRESS_REGEX.test(account)) {
         $('#target').val(account);
       }
     }
-
     function onload() {
       loadparam();
       $('#dispense').click(function (e) {
         var recaptcha = grecaptcha.getResponse();
         var target = sanitize($('#target').val());
-
         if (ADDRESS_REGEX.test(target)) {
           $('#status').html('Sending request..');
           var req = $.post('https://verify.nautilus.sh/submit-form', {
@@ -74,31 +70,317 @@
       });
     }
   </script>
-<style>
-.btn-link {
-	color: rgb(74, 85, 104);
-}
-.btn-link:hover,a {
-	color: #000;
-	text-decoration: none;
-}
-</style>
-<style>
-        @keyframes blink {
-            0% { opacity: .25; }
-            50% { opacity: .75; }
-            75% { opacity: 1; }
-            100% { opacity: .25; }
-        }
-        .blinking-icon {
-            animation: blink 2s infinite;
-	    color: silver;
-        }
-    </style>
 </head>
-
 <body onload="onload()">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script-->
+  <div class="dispenser">
+    <!--header class="header" onClick={onHeaderClick}>
+      <div class="mask-group-parent">
+        <img
+          class="mask-group-icon"
+          loading="lazy"
+          alt=""
+          src="assets/mask-group@2x.png"
+        />
+        <div class="headline-wrapper">
+          <a class="headline">VIA Faucet</a>
+        </div>
+      </div>
+      <div class="header-inner">
+        <div class="frame-parent">
+          <div class="headline-container">
+            <div class="headline1">
+              <a class="headline2">Home</a>
+            </div>
+          </div>
+          <div class="headline-frame">
+            <div class="headline3">
+              <a class="headline4">What is Voi?</a>
+            </div>
+          </div>
+          <div class="frame-div">
+            <div class="headline5">
+              <a class="headline6">Run a Node</a>
+            </div>
+          </div>
+          <div class="headline-wrapper1">
+            <div class="headline7">
+              <a class="headline8">Phase 1</a>
+            </div>
+          </div>
+          <div class="headline-wrapper2">
+            <div class="headline9">
+              <a class="headline10">Phase 2</a>
+            </div>
+          </div>
+          <div class="button-container">
+            <div class="dark-button">
+              <img
+                class="moon-01-icon"
+                loading="lazy"
+                alt=""
+                src="assets/moon01.svg"
+              />
+            </div>
+          </div>
+          <button class="button">
+            <img class="essentialscheckbox-icon" alt="" />
+            <a class="text">Quests</a>
+            <img class="arrowsarrowright-icon" alt="" />
+          </button>
+        </div>
+      </div>
+    </header-->
+    <section class="card-wrapper">
+      <div class="card">
+        <div class="hero-base">
+          <div class="vertical-container">
+            <div class="vertical-container1">
+              <div class="group-parent">
+                <img
+                  class="group-icon"
+                  loading="lazy"
+                  alt=""
+                  src="assets/group.svg"
+                />
+                <h1 class="dispenser1">Dispenser</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="call-to-action">
+      <div class="faucet-description">
+        <div class="welcome-to-the">
+          Welcome to the Voi chain test network faucet. This tool allows
+          developers to obtain test VIA tokens for use in development and
+          testing environments.
+        </div>
+        <div class="g-recaptcha" data-sitekey="6LePz90pAAAAAFqiUNlnNNVnG8YPHeagO75pTAKK"></div>
+        <div class="the-dispensed-via-container">
+          <p class="the-dispensed-via">
+            The dispensed VIA have no monetary value and should only be used
+            to test applications.
+          </p>
+          <p class="this-service-is">
+            This service is gracefully provided to enable development on the
+            Voi chain test networks.
+          </p>
+          <p class="please-do-not">
+            Please do not abuse it by requesting more VIA than needed.
+          </p>
+        </div>
+        
+        <div class="input-fieldlighttrailing-dro">
+          <div class="label">Please enter your wallet address below.</div>
+          <div class="input">
+            <div class="input-box">
+              <input id="target" class="text1" placeholder="Voi Address" type="text" />
+            </div>
+            <diva class="dropdown">
+              <div class="dropdown-item">
+                <div class="text2">VIA</div>
+                <img
+                  class="arrowschevrondown-icon"
+                  loading="lazy"
+                  alt=""
+                  src="assets/arrowschevrondown.svg"
+                />
+              </div>
+              <button id="dispense" class="button1">
+                <img class="essentialscheckbox-icon1" alt="" />
+                <div class="select-option">Dispense</div>
+                <img class="arrowsarrowright-icon1" alt="" />
+              </button>
+            </div>
+          </div>
+          <div class="hint-text">Hint text</div>
+        </div>
+      <div class="content-center-wrapper">
+        <div class="content-ccenter">
+          <div class="content-wrapper">
+            <div class="content">
+              <div class="button2">
+                <div class="paragraph-container">
+                  <div class="headline11">
+                    <div class="status">Status</div>
+                    <div id="status"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-grid">
+          <div class="crad-quests">
+            <div class="card-content">
+              <div class="card-title">Get Kibisis Wallet</div>
+              <div class="card-description">
+                <p class="do-you-have">
+                  Do you have a wallet for Voi Chain?
+                </p>
+                <p class="if-you-already">
+                  If you already have one, great! If not, get it now!
+                </p>
+              </div>
+              <a class="button3" href="https://kibis.is/" target="_blank">
+                <img class="essentialscheckbox-icon2" alt="" />
+                <div class="text3">Get Kibisis Wallet</div>
+                <img class="arrowsarrowright-icon2" alt="" />
+              </a>
+            </div>
+          </div>
+          <div class="crad-quests1">
+            <div class="text-parent">
+              <div class="text4">
+                <p class="add-via-with-qr-code">
+                  <span class="add-via">Add VIA</span>
+                  <span> with QR Code</span>
+                </p>
+              </div>
+              <div class="text5">
+                <p class="is-via-not">Is VIA not showing in Kibisis?</p>
+                <p class="if-you-already1">
+                  If you already have added it, great! If not, here!
+                </p>
+              </div>
+              <a class="button4" href="https://confused-timbale-d13.notion.site/How-to-Add-VIA-to-Kibisis-Wallet-with-Scan-QR-Code-8b6275d6d58a46baafa698d9c15bdf42" target="_blank">
+                <img class="essentialscheckbox-icon3" alt="" />
+                <div class="text6">Add Asset VIA</div>
+                <img class="arrowsarrowright-icon3" alt="" />
+              </a>
+            </div>
+          </div>
+          <div class="crad-quests2">
+            <div class="text-group">
+              <div class="text7">
+                <p class="add-via-with-app-id">
+                  <span class="add-via1">Add VIA</span>
+                  <span> with App ID</span>
+                </p>
+              </div>
+              <div class="text8">
+                <p class="is-via-not1">Is VIA not showing in Kibisis?</p>
+                <p class="if-you-already2">
+                  If you already have it, great! If not, here!
+                </p>
+              </div>
+              <a class="button5" href="https://confused-timbale-d13.notion.site/How-to-Add-VIA-to-Kibisis-Wallet-with-App-ID-9c226dde03a54232bb0cce28bbd914f6" target="_blank">
+                <img class="essentialscheckbox-icon4" alt="" />
+                <div class="text9">Add Asset VIA</div>
+                <img class="arrowsarrowright-icon4" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--section class="call-to-action1">
+      <div class="content-ccenter1">
+        <div class="content-container">
+          <div class="content1">
+            <div class="button6">
+              <div class="paragraph-container1">
+                <b class="headline12">Hungry for more Quests?</b>
+              </div>
+            </div>
+            <div class="subtitle-icon">
+              <img class="award-ribbon-1" alt="" />
+              <div class="check-out-our">
+                Check out our Phase 2 Quest Tracker for more Projects, Quests,
+                and Real-time Status Tracking.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="asana-card">
+        <div class="card01">
+          <b class="asana">Go to Phase 2 Quest Tracker</b>
+        </div>
+      </div>
+    </section-->
+    <section class="call-to-action2">
+      <div class="content-ccenter2">
+        <div class="content-parent">
+          <div class="content2">
+            <div class="button7">
+              <div class="paragraph-container2">
+                <b class="headline13">Getting Started</b>
+              </div>
+            </div>
+            <div class="subtitle-icon1">
+              <img class="award-ribbon-11" alt="" />
+              <div class="get-started-by">
+                Get started by downloading a wallet, securing Testnet tokens,
+                and familiarizing yourself with the Voi ecosystem.
+              </div>
+            </div>
+          </div>
+          <div class="social-media-links">
+            <div class="social-media-icons">
+              <div cless="social-media-row">
+                <div class="redes-xpace">
+                  <div class="platform-icon">
+                    <img
+                      class="xpace-icon"
+                      loading="lazy"
+                      alt=""
+                      src="assets/xpace.svg"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="social-media-row1">
+                <div class="redes-discord">
+                  <div class="discord-wrapper">
+                    <img
+                      class="discord-icon"
+                      loading="lazy"
+                      alt=""
+                      src="assets/discord.svg"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="social-media-row2">
+                <div class="redes-youtube">
+                  <div class="youtube-wrapper">
+                    <img
+                      class="youtube-icon"
+                      loading="lazy"
+                      alt=""
+                      src="assets/youtube.svg"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+         <img src="assets/logo.svg" alt="Nautilus logo" class="logo" />
+          <div class="text-input">
+            <div class="voi-all-rights">
+              © 2024 Nautilus. All Rights Reserved.
+            </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+<!--nav>
+  <div class="brand-container">
+    <div class="mask-group">
+      <div class="mask ellipse"></div>
+      <div class="mask brand-logo"></div>
+    </div>
+    <div class="brand-name">Voi Dispenser</div>
+  </div>
+</nav>
 
 
   <div class="container">
@@ -167,7 +449,7 @@
 
 
     </div>
-    </div>
+    </div-->
 
 </body>
 
